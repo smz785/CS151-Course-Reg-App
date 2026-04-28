@@ -1,0 +1,439 @@
+v<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.1" class="java.beans.XMLDecoder">
+ <object class="com.horstmann.violet.ClassDiagramGraph">
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode0">
+    <void property="attributes">
+     <void property="text">
+      <string>- studentId: String
+- name: String
+- year: String
+- major: String
+- enrollments: List&lt;Enrollment&gt;</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ addEnrollment(enrollment: Enrollment): void
++ removeEnrollment(enrollment: Enrollment): void
++ getEnrolledSections(): List&lt;Section&gt;
++ isEnrolledIn(section: Section): boolean</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Student
+</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double0">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double0"/>
+      <double>20.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double0"/>
+      <double>10.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>20.0</double>
+     <double>10.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode1">
+    <void property="attributes">
+     <void property="text">
+      <string>- courseId: String
+- title: String
+- credits: float or int
+- description: String</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ getCourseCode(): String
++ getCourseTitle(): String
++getCourseCredits(): int or float</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Course</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double1">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double1"/>
+      <double>380.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double1"/>
+      <double>50.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>380.0</double>
+     <double>50.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode2">
+    <void property="attributes">
+     <void property="text">
+      <string>- professorId: String
+- name: String
+- department: String
+- assignedSections: List&lt;Section&gt; </string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ assignedSection(section: Section): void
++ removeSection(section: Section): void
++ getAssignedSection(): List&lt;Sections&gt;</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Professor</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double2">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double2"/>
+      <double>10.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double2"/>
+      <double>390.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>10.0</double>
+     <double>390.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode3">
+    <void property="attributes">
+     <void property="text">
+      <string>- sectionId: String
+- course: Course
+- professor: Professor
+- timeSlot: TimeSlot
+- seatCapacity: int
+- enrollments: List&lt;Enrollment&gt;</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ hasAvailableSeat(): boolean
+ + addEnrollment(enrollment: Enrollment): boolean
+ + removeEnrollment(enrollment: Enrollment): boolean
+ + getEnrollmentCount(): int
+ + isFull(): boolean</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Section</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double3">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double3"/>
+      <double>260.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double3"/>
+      <double>270.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>260.0</double>
+     <double>270.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode4">
+    <void property="attributes">
+     <void property="text">
+      <string>- enrollmentId: String
+- student: Student
+- status: EnrollmentStatus
+- section: Section</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ activate(): void
++ drop(): void
++ isActive(): boolean</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Enrollment</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double4">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double4"/>
+      <double>620.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double4"/>
+      <double>10.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>620.0</double>
+     <double>10.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode5">
+    <void property="attributes">
+     <void property="text">
+      <string>- days: String
+- startTime: LocalTime
+- endTime: LocalTime</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ overlaps(other: TimeSlot): boolean
++ containsDay(day: String): boolean
++ getDisplayText(): String</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>TimeSlot</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double5">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double5"/>
+      <double>630.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double5"/>
+      <double>190.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>630.0</double>
+     <double>190.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode6">
+    <void property="attributes">
+     <void property="text">
+      <string>- students: List&lt;Student&gt;
+- professors: List&lt;Professor&gt;
+- courses: List&lt;Course&gt;
+- sections: List&lt;Section&gt;
+- enrollments: List&lt;Enrollment&gt;</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ addStudent(student: Student): void
++ addProfessor(professor: Professor): void
++ addCourse(course: Course): void
++ addSection(section: Section): void
++ addEnrollment(enrollment: Enrollment): void
++ findStudentById(studentId: String): Student
++ findProfessorById(professorId: String): Professor
++ findCourseByCode(courseCode: String): Course
++ findSectionById(sectionId: String): Section
++ getAllSections(): List&lt;Section&gt;
++ getAllCourses(): List&lt;Course&gt;</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>UniversityData</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double6">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double6"/>
+      <double>910.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double6"/>
+      <double>340.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>910.0</double>
+     <double>340.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode7">
+    <void property="attributes">
+     <void property="text">
+      <string>- universityData: UniversityData
+- conflictChecker: ScheduleConflictChecker</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+ registerStudent(student: Student, section: Section): boolean
++ dropStudent(student: Student, section: Section): boolean
++ canRegister(student: Student, section: Section): boolean</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>RegistrationService</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double7">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double7"/>
+      <double>800.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double7"/>
+      <double>20.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>800.0</double>
+     <double>20.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode8">
+    <void property="methods">
+     <void property="text">
+      <string>+ hasConflict(student: Student, newSection: Section): boolean
+  + sectionsConflict(section1: Section, section2: Section): boolean</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>ScheduleConflictChecker</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double8">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double8"/>
+      <double>880.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double8"/>
+      <double>190.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>880.0</double>
+     <double>190.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode9">
+    <void property="methods">
+     <void property="text">
+      <string>+ createSection(sectionId: String, course: Course, professor: Professor, timeSlot: TimeSlot, seatCapacity: int): Section</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>SectionFactory</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double9">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double9"/>
+      <double>130.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double9"/>
+      <double>610.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>130.0</double>
+     <double>610.0</double>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
