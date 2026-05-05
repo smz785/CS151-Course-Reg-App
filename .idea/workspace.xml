@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="added UML">
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="updated UML.violet">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/EnrollmentStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UML.violet" beforeDir="false" afterPath="$PROJECT_DIR$/UML.violet" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -30,22 +31,22 @@
     &quot;assignee&quot;: &quot;smz785&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/smz785/CS151-Course-Reg-App.git",
-    "accountId": "3ed446e5-484c-4233-8334-55603e7749bd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/smz785/CS151-Course-Reg-App.git&quot;,
+    &quot;accountId&quot;: &quot;3ed446e5-484c-4233-8334-55603e7749bd&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "smz785",
-    "repository": "CS151-Course-Reg-App"
+    &quot;owner&quot;: &quot;smz785&quot;,
+    &quot;repository&quot;: &quot;CS151-Course-Reg-App&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -73,7 +74,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "#1 on main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -109,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777411395036</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated UML.violet">
+      <option name="closed" value="true" />
+      <created>1777412419799</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777412419804</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +128,7 @@
     <MESSAGE value="CREATED THE PROJECT" />
     <MESSAGE value="added classes" />
     <MESSAGE value="added UML" />
-    <option name="LAST_COMMIT_MESSAGE" value="added UML" />
+    <MESSAGE value="updated UML.violet" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated UML.violet" />
   </component>
 </project>
