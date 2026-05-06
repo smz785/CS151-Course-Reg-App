@@ -4,7 +4,7 @@ public class DroppedEnrollmentState implements EnrollmentState
 {
     @Override
     public void activate(Enrollment enrollment){
-        enrollment.setState(new ActiveEnrollmentState());
+        throw new IllegalStateException("Dropped student cannot be activated");
     }
 
     @Override

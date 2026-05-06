@@ -85,22 +85,22 @@ public class UniversityData {
     }
 
     public List<Section> getAllSections() {
-        return sections;
+        return new ArrayList<>(sections);
     }
 
     public List<Course> getAllCourses() {
-        return courses;
+        return new ArrayList<>(courses);
     }
 
     public List<Student> getAllStudents() {
-        return students;
+        return new ArrayList<>(students);
     }
 
     public List<Professor> getAllProfessors() {
-        return professors;
+        return new ArrayList<>(professors);
     }
 
     public List<Enrollment> getAllEnrollments() {
-        return enrollments;
+        return new ArrayList<>(enrollments);
     }
 }

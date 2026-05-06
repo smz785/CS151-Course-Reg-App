@@ -27,7 +27,7 @@ public class Professor {
     }
 
     public List<Section> getAssignedSections() {
-        return assignedSections;
+        return new ArrayList<>(assignedSections);
     }
 
     public String getProfessorId() {
