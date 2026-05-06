@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="updated all classes with skeleton code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/ActiveEnrollmentState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/DroppedEnrollmentState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/EnrollmentState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/WaitlistedEnrollmentState.java" afterDir="false" />
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/InPersonSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/OnlineSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/InPersonSectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/OnlineSectionFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Enrollment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/EnrollmentStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/EnrollmentStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Section.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/SectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/SectionFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777971835703</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly">
+      <option name="closed" value="true" />
+      <created>1778031861535</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1778031861536</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +187,7 @@
     <MESSAGE value="updated Course.java with skeleton code" />
     <MESSAGE value="updated Section.java with skeleton code" />
     <MESSAGE value="updated all classes with skeleton code" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated all classes with skeleton code" />
+    <MESSAGE value="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly" />
   </component>
 </project>

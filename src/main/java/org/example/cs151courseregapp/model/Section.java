@@ -3,13 +3,13 @@ package org.example.cs151courseregapp.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Section {
-    private String sectionId;
-    private Course course;
-    private Professor professor;
-    private TimeSlot timeSlot;
-    private int seatCapacity;
-    private List<Enrollment> enrollments;
+public abstract class Section {
+    protected String sectionId;
+    protected Course course;
+    protected Professor professor;
+    protected TimeSlot timeSlot;
+    protected int seatCapacity;
+    protected List<Enrollment> enrollments;
 
     public Section(String sectionId, Course course, Professor professor,
                    TimeSlot timeSlot, int seatCapacity) {
@@ -77,4 +77,8 @@ public class Section {
     public List<Enrollment> getEnrollments() {
         return enrollments;
     }
+
+    public abstract String getLocation();
+
+    public abstract String getSectionType();
 }

@@ -11,36 +11,31 @@ import org.example.cs151courseregapp.model.TimeSlot;
  * Single Responsibility Principle
  * Dependency Inversion Principle
  */
-public class SectionFactory {
+public abstract class SectionFactory {
 
-    public Section createSection(String sectionId,
-                                 Course course,
-                                 Professor professor,
-                                 TimeSlot timeSlot,
-                                 int seatCapacity) {
-        if (sectionId == null || sectionId.isEmpty()) {
-            throw new IllegalArgumentException("Section ID cannot be empty.");
+    public abstract Section createSection(
+            String sectionId,
+            Course course,
+            Professor professor,
+            TimeSlot timeSlot,
+            int seatCapacity
+    );
+
+    protected void validateCommonFields(String sectionId, Course course, Professor professor, TimeSlot timeSlot, int seatCapacity){
+        if(course == null){
+            throw new IllegalArgumentException("Course cannot be null");
         }
-
-        if (course == null) {
-            throw new IllegalArgumentException("Course cannot be null.");
+        if(sectionId == null || sectionId.trim().isEmpty()){
+            throw new IllegalArgumentException("Section ID cannot be null or empty");
         }
-
-        if (professor == null) {
-            throw new IllegalArgumentException("Professor cannot be null.");
+        if(professor == null){
+            throw new IllegalArgumentException("Professor cannot be null");
         }
-
-        if (timeSlot == null) {
-            throw new IllegalArgumentException("Time slot cannot be null.");
+        if(timeSlot == null){
+            throw new IllegalArgumentException("TimeSlot cannot be null");
         }
-
-        if (seatCapacity <= 0) {
-            throw new IllegalArgumentException("Seat capacity must be positive.");
+        if(seatCapacity <= 0){
+            throw new IllegalArgumentException("Seat Capacity cannot be less than 0");
         }
-
-        Section section = new Section(sectionId, course, professor, timeSlot, seatCapacity);
-        professor.assignSection(section);
-
-        return section;
     }
 }
