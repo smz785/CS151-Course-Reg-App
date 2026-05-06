@@ -42,7 +42,7 @@ public abstract class Section {
         int count = 0;
 
         for (Enrollment enrollment : enrollments) {
-            if (enrollment.isActive()) {
+            if (enrollment.countInCapacity()) {
                 count++;
             }
         }

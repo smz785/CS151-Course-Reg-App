@@ -65,6 +65,6 @@ public class Student {
     }
 
     public List<Enrollment> getEnrollments() {
-        return enrollments;
+        return new ArrayList<>(enrollments);
     }
 }

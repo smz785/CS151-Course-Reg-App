@@ -24,6 +24,6 @@ public class ActiveEnrollmentState implements EnrollmentState
 
     @Override
     public boolean countInCapacity(){
-        return false;
+        return true;
     }
 }

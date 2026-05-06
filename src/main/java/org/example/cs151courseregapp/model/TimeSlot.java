@@ -20,7 +20,7 @@ public class TimeSlot {
         if (!startTime.isBefore(endTime)) {
             throw new IllegalArgumentException("Start time must be before end time.");
         }
-        this.days = days;
+        this.days = Set.copyOf(days);
         this.startTime = startTime;
         this.endTime = endTime;
     }
