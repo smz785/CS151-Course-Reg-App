@@ -4,25 +4,40 @@ public class Enrollment {
     private String enrollmentId;
     private Student student;
     private Section section;
-    private EnrollmentStatus status;
+    private EnrollmentState state;
 
     public Enrollment(String enrollmentId, Student student, Section section) {
         this.enrollmentId = enrollmentId;
         this.student = student;
         this.section = section;
-        this.status = EnrollmentStatus.ACTIVE;
+        this.state = new ActiveEnrollmentState();
     }
 
     public void activate() {
-        this.status = EnrollmentStatus.ACTIVE;
+        state.activate(this);
     }
 
     public void drop() {
-        this.status = EnrollmentStatus.DROPPED;
+        state.drop(this);
     }
 
     public boolean isActive() {
-        return status == EnrollmentStatus.ACTIVE;
+        return state.isActive();
+    }
+
+    public boolean countInCapacity() {
+        return state.countInCapacity();
+    }
+
+    public EnrollmentStatus getStatusName(){
+        return state.getStatusName();
+    }
+
+    public void setState(EnrollmentState state){
+        if(state == null){
+            throw new IllegalArgumentException("Enrollment state can't be null");
+        }
+        this.state = state;
     }
 
     public String getEnrollmentId() {
@@ -37,7 +52,4 @@ public class Enrollment {
         return section;
     }
 
-    public EnrollmentStatus getStatus() {
-        return status;
-    }
 }

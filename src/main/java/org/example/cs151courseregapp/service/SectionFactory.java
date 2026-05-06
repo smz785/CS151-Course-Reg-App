@@ -5,6 +5,12 @@ import org.example.cs151courseregapp.model.Professor;
 import org.example.cs151courseregapp.model.Section;
 import org.example.cs151courseregapp.model.TimeSlot;
 
+/**
+ * This class implements Factory Method Design Pattern
+ * Open/Closed Principle
+ * Single Responsibility Principle
+ * Dependency Inversion Principle
+ */
 public class SectionFactory {
 
     public Section createSection(String sectionId,
