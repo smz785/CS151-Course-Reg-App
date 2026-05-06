@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="added UML">
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Added SectionFactory.java and related classes to implement Factory Method Design Pattern">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Buildings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Days.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UML.violet" beforeDir="false" afterPath="$PROJECT_DIR$/UML.violet" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/TimeSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/TimeSlot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +18,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -30,22 +34,22 @@
     &quot;assignee&quot;: &quot;smz785&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/smz785/CS151-Course-Reg-App.git",
-    "accountId": "3ed446e5-484c-4233-8334-55603e7749bd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/smz785/CS151-Course-Reg-App.git&quot;,
+    &quot;accountId&quot;: &quot;3ed446e5-484c-4233-8334-55603e7749bd&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "smz785",
-    "repository": "CS151-Course-Reg-App"
+    &quot;owner&quot;: &quot;smz785&quot;,
+    &quot;repository&quot;: &quot;CS151-Course-Reg-App&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -65,18 +69,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "#1 on main",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#3 on main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="" />
@@ -109,7 +113,71 @@
       <option name="project" value="LOCAL" />
       <updated>1777411395036</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated UML.violet">
+      <option name="closed" value="true" />
+      <created>1777412419799</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777412419804</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updated Student.java and EnrollmentStatus.java with skeleton code">
+      <option name="closed" value="true" />
+      <created>1777968095751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1777968095752</updated>
+    </task>
+    <task id="LOCAL-00006" summary="updated Professor.java with skeleton code">
+      <option name="closed" value="true" />
+      <created>1777968657122</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1777968657122</updated>
+    </task>
+    <task id="LOCAL-00007" summary="updated Course.java with skeleton code">
+      <option name="closed" value="true" />
+      <created>1777969422356</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1777969422356</updated>
+    </task>
+    <task id="LOCAL-00008" summary="updated Section.java with skeleton code">
+      <option name="closed" value="true" />
+      <created>1777970012116</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1777970012116</updated>
+    </task>
+    <task id="LOCAL-00009" summary="updated all classes with skeleton code">
+      <option name="closed" value="true" />
+      <created>1777971835703</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1777971835703</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly">
+      <option name="closed" value="true" />
+      <created>1778031861535</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1778031861536</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added SectionFactory.java and related classes to implement Factory Method Design Pattern">
+      <option name="closed" value="true" />
+      <created>1778038141873</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1778038141873</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +187,14 @@
     <MESSAGE value="CREATED THE PROJECT" />
     <MESSAGE value="added classes" />
     <MESSAGE value="added UML" />
-    <option name="LAST_COMMIT_MESSAGE" value="added UML" />
+    <MESSAGE value="updated UML.violet" />
+    <MESSAGE value="updated Student.java and EnrollmentStatus.java with skeleton code" />
+    <MESSAGE value="updated Professor.java with skeleton code" />
+    <MESSAGE value="updated Course.java with skeleton code" />
+    <MESSAGE value="updated Section.java with skeleton code" />
+    <MESSAGE value="updated all classes with skeleton code" />
+    <MESSAGE value="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly" />
+    <MESSAGE value="Added SectionFactory.java and related classes to implement Factory Method Design Pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SectionFactory.java and related classes to implement Factory Method Design Pattern" />
   </component>
 </project>
