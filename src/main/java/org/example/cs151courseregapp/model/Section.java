@@ -75,7 +75,7 @@ public abstract class Section {
     }
 
     public List<Enrollment> getEnrollments() {
-        return enrollments;
+        return new ArrayList<>(enrollments);
     }
 
     public abstract String getLocation();
