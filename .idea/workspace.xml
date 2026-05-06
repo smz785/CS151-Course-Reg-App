@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/InPersonSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/OnlineSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/InPersonSectionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/OnlineSectionFactory.java" afterDir="false" />
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Added SectionFactory.java and related classes to implement Factory Method Design Pattern">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Buildings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Days.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Section.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/SectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/SectionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/TimeSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/TimeSlot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +21,7 @@
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -171,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778031861536</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added SectionFactory.java and related classes to implement Factory Method Design Pattern">
+      <option name="closed" value="true" />
+      <created>1778038141873</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1778038141873</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +194,7 @@
     <MESSAGE value="updated Section.java with skeleton code" />
     <MESSAGE value="updated all classes with skeleton code" />
     <MESSAGE value="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added EnrollmentState.java and other classes to implement State Design Pattern.&#10;&#10;Updated Enrollment.java accordingly" />
+    <MESSAGE value="Added SectionFactory.java and related classes to implement Factory Method Design Pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SectionFactory.java and related classes to implement Factory Method Design Pattern" />
   </component>
 </project>

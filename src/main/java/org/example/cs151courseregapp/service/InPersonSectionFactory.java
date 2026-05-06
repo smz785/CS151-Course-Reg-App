@@ -1,17 +1,13 @@
 package org.example.cs151courseregapp.service;
 
-import org.example.cs151courseregapp.model.Course;
-import org.example.cs151courseregapp.model.InPersonSection;
-import org.example.cs151courseregapp.model.Professor;
-import org.example.cs151courseregapp.model.Section;
-import org.example.cs151courseregapp.model.TimeSlot;
+import org.example.cs151courseregapp.model.*;
 
 public class InPersonSectionFactory extends SectionFactory {
-    private String building;
+    private Buildings building;
     private String roomNumber;
 
-    public InPersonSectionFactory(String building, String roomNumber){
-        if(building==null|| building.trim().isEmpty()){
+    public InPersonSectionFactory(Buildings building, String roomNumber){
+        if(building==null){
             throw new IllegalArgumentException("building is null or empty");
         }
         if(roomNumber==null|| roomNumber.trim().isEmpty()){

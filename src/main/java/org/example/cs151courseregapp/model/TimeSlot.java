@@ -1,13 +1,25 @@
 package org.example.cs151courseregapp.model;
 
 import java.time.LocalTime;
+import java.util.Set;
 
 public class TimeSlot {
-    private String days;
+    private Set<Days> days;
     private LocalTime startTime;
     private LocalTime endTime;
 
-    public TimeSlot(String days, LocalTime startTime, LocalTime endTime) {
+    public TimeSlot(Set<Days> days, LocalTime startTime, LocalTime endTime) {
+        if (days == null || days.isEmpty()) {
+            throw new IllegalArgumentException("Days cannot be empty.");
+        }
+
+        if (startTime == null || endTime == null) {
+            throw new IllegalArgumentException("Start and end time cannot be null.");
+        }
+
+        if (!startTime.isBefore(endTime)) {
+            throw new IllegalArgumentException("Start time must be before end time.");
+        }
         this.days = days;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -20,8 +32,8 @@ public class TimeSlot {
 
         boolean sameDay = false;
 
-        for (char day : days.toCharArray()) {
-            if (other.days.indexOf(day) >= 0) {
+        for (Days day : days) {
+            if (other.days.contains(day)) {
                 sameDay = true;
                 break;
             }
@@ -35,15 +47,11 @@ public class TimeSlot {
                 && endTime.isAfter(other.startTime);
     }
 
-    public boolean containsDay(String day) {
-        return day != null && days.contains(day);
-    }
-
     public String getDisplayText() {
         return days + " " + startTime + " - " + endTime;
     }
 
-    public String getDays() {
+    public Set<Days> getDays() {
         return days;
     }
 

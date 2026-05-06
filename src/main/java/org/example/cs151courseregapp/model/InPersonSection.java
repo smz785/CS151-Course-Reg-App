@@ -1,10 +1,10 @@
 package org.example.cs151courseregapp.model;
 
 public class InPersonSection extends Section{
-    private String building;
+    private Buildings building;
     private String roomNumber;
 
-    public InPersonSection(String building, String roomNumber, String sectionId, Course course, Professor professor,
+    public InPersonSection(Buildings building, String roomNumber, String sectionId, Course course, Professor professor,
                            TimeSlot timeSlot, int seatCapacity){
         super(sectionId, course, professor, timeSlot, seatCapacity);
         this.building = building;
@@ -12,7 +12,7 @@ public class InPersonSection extends Section{
 
     }
 
-    public String getBuilding(){
+    public Buildings getBuilding(){
         return building;
     }
 
