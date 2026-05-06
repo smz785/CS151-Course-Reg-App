@@ -52,7 +52,7 @@ public class TimeSlot {
     }
 
     public Set<Days> getDays() {
-        return days;
+        return Set.copyOf(days);
     }
 
     public LocalTime getStartTime() {
