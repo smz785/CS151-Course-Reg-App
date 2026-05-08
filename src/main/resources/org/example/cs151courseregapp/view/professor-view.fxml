@@ -1,14 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cs151courseregapp.controller.ProfessorController">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="1000.0">
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="250.0" text="My Classes" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="classesListView" prefHeight="570.0" prefWidth="250.0" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="600.0" prefWidth="750.0" spacing="15.0" BorderPane.alignment="CENTER">
+               <children>
+                  <!-- Class Information Section -->
+                  <VBox prefHeight="115.0" prefWidth="735.0" style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 10;">
+                     <children>
+                        <Label alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="750.0" text="Class Information">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                        <VBox prefHeight="120.0" prefWidth="750.0" spacing="8.0">
+                           <children>
+                              <Label fx:id="classTypeLabel" prefHeight="20.0" prefWidth="750.0" text="Type: In-Person / Online" />
+                              <Label fx:id="buildingPlatformLabel" prefHeight="20.0" prefWidth="750.0" text="Building / Platform: [Value]" />
+                              <Label fx:id="roomMeetingLinkLabel" prefHeight="20.0" prefWidth="750.0" text="Room / Meeting Link: [Value]" />
+                              <Label fx:id="timeslotLabel" prefHeight="20.0" prefWidth="750.0" text="Timeslot: [Value]" />
+                              <Label fx:id="capacityLabel" prefHeight="63.0" prefWidth="713.0" text="Capacity: [Value]" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <TabPane prefHeight="796.0" prefWidth="735.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Enrolled Students">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          
+                                                                              <!-- Enrolled Students Section -->
+                                          <VBox prefHeight="250.0" prefWidth="750.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="750.0" text="Enrolled Students">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="3.0" top="3.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TableView fx:id="enrolledStudentsTable" prefHeight="473.0" prefWidth="750.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="enrolledNameColumn" prefWidth="75.0" text="Name" />
+                                                      <TableColumn fx:id="enrolledIdColumn" prefWidth="75.0" text="ID" />
+                                                      <TableColumn fx:id="enrolledEmailColumn" prefWidth="100.0" text="Email" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Waitlisted Students">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          
+                                                                              <!-- Waitlisted Students Section -->
+                                          <VBox prefHeight="250.0" prefWidth="750.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="750.0" text="Waitlisted Students">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="3.0" top="3.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TableView fx:id="waitlistedStudentsTable" prefHeight="230.0" prefWidth="750.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="waitlistedNameColumn" prefWidth="75.0" text="Name" />
+                                                      <TableColumn fx:id="waitlistedIdColumn" prefWidth="75.0" text="ID" />
+                                                      <TableColumn fx:id="waitlistedEmailColumn" prefWidth="100.0" text="Email" />
+                                                      <TableColumn fx:id="waitlistPositionColumn" prefWidth="100.0" text="Waitlist Position" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
