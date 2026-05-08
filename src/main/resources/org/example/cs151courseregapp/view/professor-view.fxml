@@ -64,8 +64,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          
-                                                                              <!-- Enrolled Students Section -->
+                                          <!-- Enrolled Students Section -->
                                           <VBox prefHeight="250.0" prefWidth="750.0">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="750.0" text="Enrolled Students">
@@ -93,8 +92,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          
-                                                                              <!-- Waitlisted Students Section -->
+                                          <!-- Waitlisted Students Section -->
                                           <VBox prefHeight="250.0" prefWidth="750.0">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="750.0" text="Waitlisted Students">
