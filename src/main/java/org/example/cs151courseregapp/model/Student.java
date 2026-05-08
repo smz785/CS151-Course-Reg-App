@@ -7,10 +7,10 @@ public class Student {
     private String studentId;
     private String name;
     private String major;
-    private String year;
+    private Year year;
     private List<Enrollment> enrollments;
 
-    public Student(String studentId, String name, String major, String year) {
+    public Student(String studentId, String name, String major, Year year) {
         this.studentId = studentId;
         this.name = name;
         this.major = major;
@@ -80,7 +80,7 @@ public class Student {
         return major;
     }
 
-    public String getYear() {
+    public Year getYear() {
         return year;
     }
 

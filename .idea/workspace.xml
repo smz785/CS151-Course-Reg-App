@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="updated codebase">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/RegistrationResult.java" afterDir="false" />
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="updated codebase and added waitlisted logic">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Year.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Enrollment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Section.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/WaitlistedEnrollmentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/WaitlistedEnrollmentState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/service/RegistrationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/StudentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/StudentTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,13 +74,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.StudentTest.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#7 on main",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -204,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778103552393</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="updated codebase and added waitlisted logic">
+      <option name="closed" value="true" />
+      <created>1778129011052</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1778129011054</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +234,7 @@
     <MESSAGE value="Added enum classes Buildings.java and Days.java&#10;Updated TimeSlot.java, InPersonSection.java, and InPersonSectionFactory.java to use enum classes" />
     <MESSAGE value="Updated classes to return a clone and not mutable list objects.&#10;Fixed logic issues in ActiveEnrollmentState.java and DroppedEnrollmentState.java" />
     <MESSAGE value="updated codebase" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated codebase" />
+    <MESSAGE value="updated codebase and added waitlisted logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated codebase and added waitlisted logic" />
   </component>
 </project>
