@@ -8,7 +8,7 @@ public class StudentTest {
 
     @Test
     void testStudentCreation() {
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
 
         assertEquals("S1", student.getStudentId());
         assertEquals("Test", student.getName());
@@ -19,7 +19,7 @@ public class StudentTest {
 
     @Test
     void testAddEnrollment() {
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
 
         Section section = new InPersonSection(
                 null,
@@ -40,7 +40,7 @@ public class StudentTest {
 
     @Test
     void testRemoveEnrollment() {
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
 
         Section section = new InPersonSection(
                 null,
@@ -62,7 +62,7 @@ public class StudentTest {
 
     @Test
     void testIsEnrolledInReturnsTrueForActiveEnrollment() {
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
 
         Section section = new InPersonSection(
                 null,
@@ -83,7 +83,7 @@ public class StudentTest {
 
     @Test
     void testAddNullEnrollmentDoesNotChangeList() {
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
 
         student.addEnrollment(null);
 

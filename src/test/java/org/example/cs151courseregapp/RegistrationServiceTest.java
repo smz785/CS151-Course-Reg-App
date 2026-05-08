@@ -13,7 +13,7 @@ public class RegistrationServiceTest {
         ScheduleConflictChecker conflictChecker = new ScheduleConflictChecker();
         RegistrationService service = new RegistrationService(universityData, conflictChecker);
 
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
 
         Section section = new InPersonSection(
                 null,
@@ -68,8 +68,8 @@ public class RegistrationServiceTest {
                 1
         );
 
-        Student firstStudent = new Student("S1", "Test One", "CS", "Senior");
-        Student secondStudent = new Student("S2", "Test Two", "CS", "Junior");
+        Student firstStudent = new Student("S1", "Test One", "CS", Year.SENIOR);
+        Student secondStudent = new Student("S2", "Test Two", "CS", Year.JUNIOR);
 
         assertTrue(service.registerStudent(firstStudent, section));
         assertFalse(service.registerStudent(secondStudent, section));

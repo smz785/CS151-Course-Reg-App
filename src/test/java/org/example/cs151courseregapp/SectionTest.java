@@ -41,7 +41,7 @@ public class SectionTest {
                 1
         );
 
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
         Enrollment enrollment = new Enrollment("E1", student, section);
 
         assertTrue(section.addEnrollment(enrollment));
@@ -63,7 +63,7 @@ public class SectionTest {
                 2
         );
 
-        Student student = new Student("S1", "Test", "CS", "Senior");
+        Student student = new Student("S1", "Test", "CS", Year.SENIOR);
         Enrollment enrollment = new Enrollment("E1", student, section);
 
         assertTrue(section.addEnrollment(enrollment));
