@@ -13,6 +13,29 @@ public class Enrollment {
         this.state = new ActiveEnrollmentState();
     }
 
+    public Enrollment(String enrollmentId, Student student, Section section, EnrollmentState initialState) {
+        if (enrollmentId == null || enrollmentId.trim().isEmpty()) {
+            throw new IllegalArgumentException("Enrollment ID cannot be null or empty");
+        }
+
+        if (student == null) {
+            throw new IllegalArgumentException("Student cannot be null");
+        }
+
+        if (section == null) {
+            throw new IllegalArgumentException("Section cannot be null");
+        }
+
+        if (initialState == null) {
+            throw new IllegalArgumentException("Initial enrollment state cannot be null");
+        }
+
+        this.enrollmentId = enrollmentId;
+        this.student = student;
+        this.section = section;
+        this.state = initialState;
+    }
+
     public void activate() {
         state.activate(this);
     }
@@ -51,5 +74,7 @@ public class Enrollment {
     public Section getSection() {
         return section;
     }
+
+    public boolean isWaitlisted(){return getStatusName() == EnrollmentStatus.WAITLISTED;}
 
 }

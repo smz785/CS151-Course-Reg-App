@@ -1,4 +1,5 @@
 package org.example.cs151courseregapp.model;
+import org.example.cs151courseregapp.model.Section;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +18,17 @@ public class Student {
         this.enrollments = new ArrayList<>();
     }
 
-    public void addEnrollment(Enrollment enrollment) {
-        if (enrollment != null && !enrollments.contains(enrollment)) {
-            enrollments.add(enrollment);
+    public boolean addEnrollment(Enrollment enrollment) {
+        if (enrollment == null || enrollments.contains(enrollment)) {
+            return false;
         }
+
+        if (enrollment.getStudent() != this) {
+            return false;
+        }
+
+        enrollments.add(enrollment);
+        return true;
     }
 
     public void removeEnrollment(Enrollment enrollment) {
@@ -45,6 +53,18 @@ public class Student {
                 return true;
             }
         }
+
+        return false;
+    }
+
+    public boolean hasCurrentEnrollmentIn(Section section) {
+        for (Enrollment enrollment : enrollments) {
+            if ((enrollment.isActive() || enrollment.isWaitlisted())
+                    && enrollment.getSection().equals(section)) {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -67,4 +87,8 @@ public class Student {
     public List<Enrollment> getEnrollments() {
         return new ArrayList<>(enrollments);
     }
+
+
+
+
 }

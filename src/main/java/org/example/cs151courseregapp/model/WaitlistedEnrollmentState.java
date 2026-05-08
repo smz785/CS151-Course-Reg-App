@@ -1,6 +1,6 @@
 package org.example.cs151courseregapp.model;
 
-public class WaitlistedEnrollmentState implements EnrollmentState{
+public class WaitlistedEnrollmentState implements EnrollmentState {
 
     @Override
     public void activate(Enrollment enrollment) {
@@ -13,17 +13,17 @@ public class WaitlistedEnrollmentState implements EnrollmentState{
     }
 
     @Override
-    public EnrollmentStatus getStatusName(){
+    public EnrollmentStatus getStatusName() {
         return EnrollmentStatus.WAITLISTED;
     }
 
     @Override
-    public boolean isActive(){
+    public boolean isActive() {
         return false;
     }
 
     @Override
-    public boolean countInCapacity(){
+    public boolean countInCapacity() {
         return false;
     }
 }
