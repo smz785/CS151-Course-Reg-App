@@ -31,6 +31,7 @@ public class RegistrationServiceTest {
         assertEquals(1, student.getEnrollments().size());
         assertEquals(1, section.getEnrollments().size());
         assertEquals(1, universityData.getAllEnrollments().size());
+        assertTrue(student.getEnrollments().get(0).isActive());
     }
 
     @Test
@@ -53,7 +54,7 @@ public class RegistrationServiceTest {
     }
 
     @Test
-    void testCannotRegisterWhenSectionIsFull() {
+    void testRegisterStudentWaitlistedWhenFull() {
         UniversityData universityData = new UniversityData();
         ScheduleConflictChecker conflictChecker = new ScheduleConflictChecker();
         RegistrationService service = new RegistrationService(universityData, conflictChecker);
@@ -69,9 +70,13 @@ public class RegistrationServiceTest {
         );
 
         Student firstStudent = new Student("S1", "Test One", "CS", Year.SENIOR);
-        Student secondStudent = new Student("S2", "Test Two", "CS", Year.JUNIOR);
+        Student secondStudent = new Student("S2", "Test Two", "CS", Year.SENIOR);
 
         assertTrue(service.registerStudent(firstStudent, section));
-        assertFalse(service.registerStudent(secondStudent, section));
+        assertTrue(service.registerStudent(secondStudent, section));
+
+        Enrollment secondEnrollment = secondStudent.getEnrollments().get(0);
+
+        assertTrue(secondEnrollment.isWaitlisted());
     }
 }

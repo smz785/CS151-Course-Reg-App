@@ -13,7 +13,7 @@ public class StudentTest {
         assertEquals("S1", student.getStudentId());
         assertEquals("Test", student.getName());
         assertEquals("CS", student.getMajor());
-        assertEquals("Senior", student.getYear());
+        assertEquals(Year.SENIOR, student.getYear());
         assertTrue(student.getEnrollments().isEmpty());
     }
 
