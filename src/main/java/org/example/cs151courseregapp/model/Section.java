@@ -86,6 +86,14 @@ public abstract class Section {
         return new ArrayList<>(enrollments);
     }
 
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public void setTimeSlot(TimeSlot timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+
     public abstract String getLocation();
 
     public abstract String getSectionType();
