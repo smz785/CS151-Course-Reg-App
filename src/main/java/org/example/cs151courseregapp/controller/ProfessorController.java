@@ -1,75 +1,131 @@
 package org.example.cs151courseregapp.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import org.example.cs151courseregapp.model.*;
 
 public class ProfessorController {
 
-    @FXML
-    private ListView<String> courseList;
+    private final UniversityData universityData = UniversityData.getInstance();
 
     @FXML
-    private ListView<String> studentList;
+    private ListView<Section> classesListView;
 
     @FXML
-    private TextField gradeField;
+    private Label classTypeLabel;
 
     @FXML
-    private Label messageLabel;
+    private Label buildingPlatformLabel;
+
+    @FXML
+    private Label roomMeetingLinkLabel;
+
+    @FXML
+    private Label timeslotLabel;
+
+    @FXML
+    private Label capacityLabel;
+
+    @FXML
+    private TableView<Enrollment> enrolledStudentsTable;
+
+    @FXML
+    private TableColumn<Enrollment, String> enrolledNameColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> enrolledIdColumn;
+
+    @FXML
+    private TableView<Enrollment> waitlistedStudentsTable;
+
+    @FXML
+    private TableColumn<Enrollment, String> waitlistedNameColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> waitlistedIdColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> waitlistPositionColumn;
 
     @FXML
     public void initialize() {
-        courseList.getItems().add("CS 46B - Intro to Data Structures");
-        courseList.getItems().add("CS 151 - Object-Oriented Design");
-        courseList.getItems().add("MATH 42 - Discrete Math");
+        classesListView.getItems().setAll(universityData.getAllSections());
+
+        classesListView.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Section section, boolean empty) {
+                super.updateItem(section, empty);
+
+                if (empty || section == null) {
+                    setText(null);
+                } else {
+                    setText(section.getCourse().getCourseCode() + " - " + section.getSectionId());
+                }
+            }
+        });
+
+        classesListView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldSection, newSection) -> showSectionInfo(newSection)
+        );
+
+        setupEnrolledTable();
+        setupWaitlistedTable();
+
+        if (!classesListView.getItems().isEmpty()) {
+            classesListView.getSelectionModel().selectFirst();
+        }
     }
 
-    @FXML
-    private void viewStudents() {
-        studentList.getItems().clear();
+    private void setupEnrolledTable() {
+        enrolledNameColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getName())
+        );
 
-        String selectedCourse = courseList.getSelectionModel().getSelectedItem();
-
-        if (selectedCourse == null) {
-            messageLabel.setText("Please select a course first.");
-            return;
-        }
-
-        if (selectedCourse.contains("CS 151")) {
-            studentList.getItems().add("Alice Johnson");
-            studentList.getItems().add("Brian Lee");
-            studentList.getItems().add("Sara Patel");
-        } else if (selectedCourse.contains("CS151")) {
-            studentList.getItems().add("Daniel Kim");
-            studentList.getItems().add("Maya Singh");
-            studentList.getItems().add("Jordan Smith");
-        } else if (selectedCourse.contains("MATH101")) {
-            studentList.getItems().add("Emma Wilson");
-            studentList.getItems().add("Noah Brown");
-        }
-
-        messageLabel.setText("Students loaded for " + selectedCourse);
+        enrolledIdColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getStudentId())
+        );
     }
 
-    @FXML
-    private void submitGrade() {
-        String selectedStudent = studentList.getSelectionModel().getSelectedItem();
-        String grade = gradeField.getText();
+    private void setupWaitlistedTable() {
+        waitlistedNameColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getName())
+        );
 
-        if (selectedStudent == null) {
-            messageLabel.setText("Please select a student first.");
+        waitlistedIdColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getStudentId())
+        );
+
+        waitlistPositionColumn.setCellValueFactory(data -> {
+            int position = waitlistedStudentsTable.getItems().indexOf(data.getValue()) + 1;
+            return new SimpleStringProperty(String.valueOf(position));
+        });
+    }
+
+    private void showSectionInfo(Section section) {
+        if (section == null) {
             return;
         }
 
-        if (grade == null || grade.trim().isEmpty()) {
-            messageLabel.setText("Please enter a grade.");
-            return;
-        }
+        classTypeLabel.setText(section.getSectionType());
+        buildingPlatformLabel.setText(section.getLocation());
+        roomMeetingLinkLabel.setText(section.getLocation());
+        timeslotLabel.setText(section.getTimeSlot().getDisplayText());
+        capacityLabel.setText(section.getEnrollmentCount() + " / " + section.getSeatCapacity());
 
-        messageLabel.setText("Grade " + grade.trim() + " submitted for " + selectedStudent);
-        gradeField.clear();
+        refreshEnrollmentTables(section);
+    }
+
+    private void refreshEnrollmentTables(Section section) {
+        enrolledStudentsTable.getItems().clear();
+        waitlistedStudentsTable.getItems().clear();
+
+        for (Enrollment enrollment : section.getEnrollments()) {
+            if (enrollment.isWaitlisted()) {
+                waitlistedStudentsTable.getItems().add(enrollment);
+            } else if (enrollment.isActive()) {
+                enrolledStudentsTable.getItems().add(enrollment);
+            }
+        }
     }
 }
-
