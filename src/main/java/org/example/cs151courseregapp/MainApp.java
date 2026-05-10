@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.cs151courseregapp.model.SeedData;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,6 +12,7 @@ import java.net.URL;
 public class MainApp extends Application {
 
     private static Stage primaryStage;
+
 
     private static final int WIDTH = 600;
     private static final int HEIGHT = 440;
@@ -20,6 +22,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
 
+        SeedData.initialize();
         Scene scene = loadScene("main-view.fxml");
 
         stage.setTitle("Course Registration App");
