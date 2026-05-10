@@ -140,7 +140,6 @@
                                                    <columns>
                                                       <TableColumn fx:id="waitlistedNameColumn" prefWidth="75.0" text="Name" />
                                                       <TableColumn fx:id="waitlistedIdColumn" prefWidth="75.0" text="ID" />
-                                                      <TableColumn fx:id="waitlistPositionColumn" prefWidth="100.0" text="Waitlist Position" />
                                                       <TableColumn fx:id="waitlistedActionColumn" prefWidth="75.0" text="Action" />
                                                    </columns>
                                                 </TableView>
