@@ -1,117 +1,286 @@
 package org.example.cs151courseregapp.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import org.example.cs151courseregapp.model.*;
+
+import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AdminController {
 
-    
-    @FXML
-    private TextField courseNameField;
+    private final UniversityData universityData = UniversityData.getInstance();
 
     @FXML
-    private ListView<String> courseList;
-
-    
-    @FXML
-    private ListView<String> waitlistedStudents;
+    private ListView<Section> classesListView;
 
     @FXML
-    private ListView<String> enrolledStudents;
-
-    
-    @FXML
-    private ListView<String> professors;
+    private Label instructorNameLabel;
 
     @FXML
-    private ListView<String> sections;
+    private Label classTypeLabel;
 
     @FXML
-    private ListView<String> assignedSections;
+    private Label buildingPlatformLabel;
 
-    
     @FXML
-    private TextField scheduleField;
+    private Label roomMeetingLinkLabel;
+
+    @FXML
+    private Label timeslotLabel;
+
+    @FXML
+    private Label capacityLabel;
+
+    @FXML
+    private TableView<Enrollment> enrolledStudentsTable;
+
+    @FXML
+    private TableColumn<Enrollment, String> enrolledNameColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> enrolledIdColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> enrolledActionColumn;
+
+    @FXML
+    private TableView<Enrollment> waitlistedStudentsTable;
+
+    @FXML
+    private TableColumn<Enrollment, String> waitlistedNameColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> waitlistedIdColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> waitlistPositionColumn;
+
+    @FXML
+    private TableColumn<Enrollment, String> waitlistedActionColumn;
 
     @FXML
     public void initialize() {
-        // Courses
-        courseList.getItems().addAll("CS 46B", "CS 151", "MATH 42");
+        classesListView.getItems().setAll(universityData.getAllSections());
 
-        // Waitlist example
-        waitlistedStudents.getItems().addAll("Alice", "Bob", "Charlie");
+        classesListView.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Section section, boolean empty) {
+                super.updateItem(section, empty);
 
-        // Professors
-        professors.getItems().addAll("Prof. Smith", "Prof. Lee");
+                if (empty || section == null) {
+                    setText(null);
+                } else {
+                    setText(section.getCourse().getCourseCode() + " - " + section.getSectionId());
+                }
+            }
+        });
 
-        // Sections
-        sections.getItems().addAll("CS151 - Section 1", "CS151 - Section 2");
+        classesListView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldSection, newSection) -> showSectionInfo(newSection)
+        );
+
+        setupEnrolledTable();
+        setupWaitlistedTable();
+
+        if (!classesListView.getItems().isEmpty()) {
+            classesListView.getSelectionModel().selectFirst();
+        }
     }
 
+    private void setupEnrolledTable() {
+        enrolledNameColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getName())
+        );
 
+        enrolledIdColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getStudentId())
+        );
 
-    @FXML
-    private void addCourse() {
-        String courseName = courseNameField.getText();
+        enrolledActionColumn.setCellValueFactory(data ->
+                new SimpleStringProperty("Active")
+        );
+    }
 
-        if (courseName != null && !courseName.trim().isEmpty()) {
-            courseList.getItems().add(courseName.trim());
-            courseNameField.clear();
+    private void setupWaitlistedTable() {
+        waitlistedNameColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getName())
+        );
+
+        waitlistedIdColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getStudent().getStudentId())
+        );
+
+        waitlistPositionColumn.setCellValueFactory(data -> {
+            int position = waitlistedStudentsTable.getItems().indexOf(data.getValue()) + 1;
+            return new SimpleStringProperty(String.valueOf(position));
+        });
+
+        waitlistedActionColumn.setCellValueFactory(data ->
+                new SimpleStringProperty("Enroll")
+        );
+
+        waitlistedStudentsTable.setRowFactory(table -> {
+            TableRow<Enrollment> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    enrollWaitlistedStudent(row.getItem());
+                }
+            });
+            return row;
+        });
+    }
+
+    private void showSectionInfo(Section section) {
+        if (section == null) {
+            return;
+        }
+
+        Professor professor = section.getProfessor();
+
+        if (professor == null) {
+            instructorNameLabel.setText("Unassigned");
+        } else {
+            instructorNameLabel.setText(professor.getName());
+        }
+
+        classTypeLabel.setText(section.getSectionType());
+        buildingPlatformLabel.setText(section.getLocation());
+        roomMeetingLinkLabel.setText(section.getLocation());
+        timeslotLabel.setText(section.getTimeSlot().getDisplayText());
+        capacityLabel.setText(section.getEnrollmentCount() + " / " + section.getSeatCapacity());
+
+        refreshEnrollmentTables(section);
+    }
+
+    private void refreshEnrollmentTables(Section section) {
+        enrolledStudentsTable.getItems().clear();
+        waitlistedStudentsTable.getItems().clear();
+
+        for (Enrollment enrollment : section.getEnrollments()) {
+            if (enrollment.isWaitlisted()) {
+                waitlistedStudentsTable.getItems().add(enrollment);
+            } else if (enrollment.isActive()) {
+                enrolledStudentsTable.getItems().add(enrollment);
+            }
         }
     }
 
     @FXML
-    private void removeCourse() {
-        String selectedCourse = courseList.getSelectionModel().getSelectedItem();
+    private void assignUnassignInstructor() {
+        Section selectedSection = classesListView.getSelectionModel().getSelectedItem();
 
-        if (selectedCourse != null) {
-            courseList.getItems().remove(selectedCourse);
+        if (selectedSection == null) {
+            showMessage("Please select a class first.");
+            return;
         }
+
+        if (selectedSection.getProfessor() != null) {
+            selectedSection.setProfessor(null);
+            showSectionInfo(selectedSection);
+            showMessage("Instructor unassigned.");
+            return;
+        }
+
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Assign Instructor");
+        dialog.setHeaderText("Enter professor ID:");
+        dialog.setContentText("Professor ID:");
+
+        dialog.showAndWait().ifPresent(professorId -> {
+            Professor professor = universityData.findProfessorById(professorId.trim());
+
+            if (professor == null) {
+                showMessage("Professor not found.");
+                return;
+            }
+
+            selectedSection.setProfessor(professor);
+            showSectionInfo(selectedSection);
+            showMessage("Instructor assigned.");
+        });
     }
 
-    
     @FXML
-    private void enrollWaitlistedStudent() {
-        String student = waitlistedStudents.getSelectionModel().getSelectedItem();
+    private void changeClassTime() {
+        Section selectedSection = classesListView.getSelectionModel().getSelectedItem();
 
-        if (student != null) {
-            waitlistedStudents.getItems().remove(student);
-            enrolledStudents.getItems().add(student);
+        if (selectedSection == null) {
+            showMessage("Please select a class first.");
+            return;
         }
+
+        TextInputDialog daysDialog = new TextInputDialog();
+        daysDialog.setTitle("Change Class Time");
+        daysDialog.setHeaderText("Enter days exactly as your Days enum uses them.");
+        daysDialog.setContentText("Example: MONDAY,WEDNESDAY");
+
+        daysDialog.showAndWait().ifPresent(daysText -> {
+            TextInputDialog startDialog = new TextInputDialog();
+            startDialog.setTitle("Start Time");
+            startDialog.setHeaderText("Enter start time:");
+            startDialog.setContentText("Example: 09:00");
+
+            startDialog.showAndWait().ifPresent(startText -> {
+                TextInputDialog endDialog = new TextInputDialog();
+                endDialog.setTitle("End Time");
+                endDialog.setHeaderText("Enter end time:");
+                endDialog.setContentText("Example: 10:15");
+
+                endDialog.showAndWait().ifPresent(endText -> {
+                    try {
+                        Set<Days> days = parseDays(daysText);
+                        LocalTime startTime = LocalTime.parse(startText.trim());
+                        LocalTime endTime = LocalTime.parse(endText.trim());
+
+                        TimeSlot newTimeSlot = new TimeSlot(days, startTime, endTime);
+                        selectedSection.setTimeSlot(newTimeSlot);
+
+                        showSectionInfo(selectedSection);
+                        showMessage("Class time updated.");
+
+                    } catch (Exception e) {
+                        showMessage("Invalid time format or day name.");
+                    }
+                });
+            });
+        });
     }
 
+    private Set<Days> parseDays(String daysText) {
+        Set<Days> days = new HashSet<>();
 
-    @FXML
-    private void assignProfessorToSection() {
-        String professor = professors.getSelectionModel().getSelectedItem();
-        String section = sections.getSelectionModel().getSelectedItem();
+        String[] parts = daysText.split(",");
 
-        if (professor != null && section != null) {
-            assignedSections.getItems().add(professor + " -> " + section);
+        for (String part : parts) {
+            days.add(Days.valueOf(part.trim().toUpperCase()));
         }
+
+        return days;
     }
 
-  
-    @FXML
-    private void unassignProfessorFromSection() {
-        String selected = assignedSections.getSelectionModel().getSelectedItem();
+    private void enrollWaitlistedStudent(Enrollment enrollment) {
+        Section section = enrollment.getSection();
 
-        if (selected != null) {
-            assignedSections.getItems().remove(selected);
+        if (!section.hasAvailableSeat()) {
+            showMessage("No available seats in this section.");
+            return;
         }
+
+        enrollment.activate();
+
+        refreshEnrollmentTables(section);
+        showSectionInfo(section);
+        showMessage("Waitlisted student enrolled.");
     }
 
-
-    @FXML
-    private void changeSectionSchedule() {
-        String section = sections.getSelectionModel().getSelectedItem();
-        String newSchedule = scheduleField.getText();
-
-        if (section != null && newSchedule != null && !newSchedule.isEmpty()) {
-            int index = sections.getItems().indexOf(section);
-            sections.getItems().set(index, section + " (" + newSchedule + ")");
-            scheduleField.clear();
-        }
+    private void showMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Admin Action");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
