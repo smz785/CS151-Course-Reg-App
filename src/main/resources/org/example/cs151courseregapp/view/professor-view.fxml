@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cs151courseregapp.controller.ProfessorController">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="1000.0">
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="250.0" text="My Classes" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="classesListView" prefHeight="570.0" prefWidth="250.0" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="600.0" prefWidth="750.0" spacing="15.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label contentDisplay="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="750.0" text="Class Information" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Separator prefWidth="200.0" />
+                        <GridPane hgap="10.0" vgap="8.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="NEVER" maxWidth="487.0" minWidth="0.0" prefWidth="125.0" />
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="550.0" minWidth="0.0" prefWidth="300.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Type: " />
+                              <Label fx:id="classTypeLabel" text="[Value]" GridPane.columnIndex="1" />
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Building / Platform:" GridPane.rowIndex="1" />
+                              <Label fx:id="buildingPlatformLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Room / Meeting Link:" GridPane.rowIndex="2" />
+                              <Label fx:id="roomMeetingLinkLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Timeslot: " GridPane.rowIndex="3" />
+                              <Label fx:id="timeslotLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label prefHeight="63.0" prefWidth="713.0" text="Capacity: " GridPane.rowIndex="4" />
+                              <Label fx:id="capacityLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <TabPane prefHeight="796.0" prefWidth="735.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Enrolled Students">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <!-- Enrolled Students Section -->
+                                          <VBox prefHeight="250.0" prefWidth="750.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="750.0" text="Enrolled Students">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="3.0" top="3.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TableView fx:id="enrolledStudentsTable" prefHeight="473.0" prefWidth="750.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="enrolledNameColumn" prefWidth="75.0" text="Name" />
+                                                      <TableColumn fx:id="enrolledIdColumn" prefWidth="75.0" text="ID" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Waitlisted Students">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <!-- Waitlisted Students Section -->
+                                          <VBox prefHeight="250.0" prefWidth="750.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="750.0" text="Waitlisted Students">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="3.0" top="3.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TableView fx:id="waitlistedStudentsTable" prefHeight="230.0" prefWidth="750.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="waitlistedNameColumn" prefWidth="75.0" text="Name" />
+                                                      <TableColumn fx:id="waitlistedIdColumn" prefWidth="75.0" text="ID" />
+                                                      <TableColumn fx:id="waitlistPositionColumn" prefWidth="100.0" text="Waitlist Position" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
