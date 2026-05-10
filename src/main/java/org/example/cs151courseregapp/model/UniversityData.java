@@ -4,11 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UniversityData {
+
+    private static UniversityData instance;
+    
     private List<Student> students;
     private List<Professor> professors;
     private List<Course> courses;
     private List<Section> sections;
     private List<Enrollment> enrollments;
+
+    public static UniversityData getInstance() {
+        if (instance == null) {
+            instance = new UniversityData();
+        }
+        return instance;
+    }
 
     public UniversityData() {
         this.students = new ArrayList<>();
