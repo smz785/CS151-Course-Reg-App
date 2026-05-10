@@ -89,7 +89,7 @@
                         </GridPane>
                      </children>
                   </VBox>
-                  <ScrollPane fitToWidth="true">
+                  <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
                      <content>
                         <TabPane prefHeight="796.0" prefWidth="735.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
@@ -108,7 +108,7 @@
                                                       <Insets bottom="3.0" top="3.0" />
                                                    </padding>
                                                 </Label>
-                                                <TableView fx:id="enrolledStudentsTable" prefHeight="473.0" prefWidth="750.0">
+                                                <TableView fx:id="enrolledStudentsTable" prefWidth="750.0" VBox.vgrow="ALWAYS">
                                                    <columns>
                                                       <TableColumn fx:id="enrolledNameColumn" prefWidth="75.0" text="Name" />
                                                       <TableColumn fx:id="enrolledIdColumn" prefWidth="75.0" text="ID" />
