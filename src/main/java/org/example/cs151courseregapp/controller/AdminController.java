@@ -3,115 +3,76 @@ package org.example.cs151courseregapp.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import org.example.cs151courseregapp.model.Course;
+import org.example.cs151courseregapp.model.UniversityData;
 
 public class AdminController {
 
-    
+    private final UniversityData universityData = UniversityData.getInstance();
+
     @FXML
-    private TextField courseNameField;
+    private TextField courseCodeField;
+
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField creditsField;
+
+    @FXML
+    private TextField descriptionField;
 
     @FXML
     private ListView<String> courseList;
 
-    
-    @FXML
-    private ListView<String> waitlistedStudents;
-
-    @FXML
-    private ListView<String> enrolledStudents;
-
-    
-    @FXML
-    private ListView<String> professors;
-
-    @FXML
-    private ListView<String> sections;
-
-    @FXML
-    private ListView<String> assignedSections;
-
-    
-    @FXML
-    private TextField scheduleField;
-
     @FXML
     public void initialize() {
-        // Courses
-        courseList.getItems().addAll("CS 46B", "CS 151", "MATH 42");
-
-        // Waitlist example
-        waitlistedStudents.getItems().addAll("Alice", "Bob", "Charlie");
-
-        // Professors
-        professors.getItems().addAll("Prof. Smith", "Prof. Lee");
-
-        // Sections
-        sections.getItems().addAll("CS151 - Section 1", "CS151 - Section 2");
+        refreshCourseList();
     }
 
+    private void refreshCourseList() {
+        courseList.getItems().clear();
 
+        for (Course course : universityData.getAllCourses()) {
+            courseList.getItems().add(course.getCourseCode() + " - " + course.getTitle());
+        }
+    }
 
     @FXML
     private void addCourse() {
-        String courseName = courseNameField.getText();
+        String code = courseCodeField.getText();
+        String title = titleField.getText();
+        String creditsText = creditsField.getText();
+        String description = descriptionField.getText();
 
-        if (courseName != null && !courseName.trim().isEmpty()) {
-            courseList.getItems().add(courseName.trim());
-            courseNameField.clear();
+        if (code != null && title != null && creditsText != null &&
+            !code.isEmpty() && !title.isEmpty() && !creditsText.isEmpty()) {
+
+            try {
+                int credits = Integer.parseInt(creditsText);
+
+                Course course = new Course(code.trim(), title.trim(), credits, description.trim());
+                universityData.addCourse(course);
+
+                refreshCourseList();
+
+                courseCodeField.clear();
+                titleField.clear();
+                creditsField.clear();
+                descriptionField.clear();
+
+            } catch (NumberFormatException e) {
+                System.out.println("Credits must be a number.");
+            }
         }
     }
 
     @FXML
     private void removeCourse() {
-        String selectedCourse = courseList.getSelectionModel().getSelectedItem();
-
-        if (selectedCourse != null) {
-            courseList.getItems().remove(selectedCourse);
-        }
-    }
-
-    
-    @FXML
-    private void enrollWaitlistedStudent() {
-        String student = waitlistedStudents.getSelectionModel().getSelectedItem();
-
-        if (student != null) {
-            waitlistedStudents.getItems().remove(student);
-            enrolledStudents.getItems().add(student);
-        }
-    }
-
-
-    @FXML
-    private void assignProfessorToSection() {
-        String professor = professors.getSelectionModel().getSelectedItem();
-        String section = sections.getSelectionModel().getSelectedItem();
-
-        if (professor != null && section != null) {
-            assignedSections.getItems().add(professor + " -> " + section);
-        }
-    }
-
-  
-    @FXML
-    private void unassignProfessorFromSection() {
-        String selected = assignedSections.getSelectionModel().getSelectedItem();
+        String selected = courseList.getSelectionModel().getSelectedItem();
 
         if (selected != null) {
-            assignedSections.getItems().remove(selected);
-        }
-    }
-
-
-    @FXML
-    private void changeSectionSchedule() {
-        String section = sections.getSelectionModel().getSelectedItem();
-        String newSchedule = scheduleField.getText();
-
-        if (section != null && newSchedule != null && !newSchedule.isEmpty()) {
-            int index = sections.getItems().indexOf(section);
-            sections.getItems().set(index, section + " (" + newSchedule + ")");
-            scheduleField.clear();
+            courseList.getItems().remove(selected);
         }
     }
 }
