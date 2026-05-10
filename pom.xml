@@ -129,7 +129,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>org.example.cs151courseregapp/org.example.cs151courseregapp.HelloApplication</mainClass>
+              <mainClass>org.example.cs151courseregapp/org.example.cs151courseregapp.MainApp</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
