@@ -2,7 +2,9 @@ package org.example.cs151courseregapp.controller;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import org.example.cs151courseregapp.model.*;
 
 import java.time.LocalTime;
@@ -119,16 +121,18 @@ public class AdminController {
         });
 
         waitlistedActionColumn.setCellValueFactory(data ->
-                new SimpleStringProperty("Enroll")
+                new SimpleStringProperty("Double-click to enroll")
         );
 
         waitlistedStudentsTable.setRowFactory(table -> {
             TableRow<Enrollment> row = new TableRow<>();
+
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && !row.isEmpty()) {
                     enrollWaitlistedStudent(row.getItem());
                 }
             });
+
             return row;
         });
     }
@@ -212,12 +216,45 @@ public class AdminController {
             return;
         }
 
-        TextInputDialog daysDialog = new TextInputDialog();
-        daysDialog.setTitle("Change Class Time");
-        daysDialog.setHeaderText("Enter days exactly as your Days enum uses them.");
-        daysDialog.setContentText("Example: MONDAY,WEDNESDAY");
+        Dialog<Set<Days>> daysDialog = new Dialog<>();
+        daysDialog.setTitle("Change Class Days");
+        daysDialog.setHeaderText("Select class days:");
 
-        daysDialog.showAndWait().ifPresent(daysText -> {
+        VBox dayOptions = new VBox(8);
+
+        for (Days day : Days.values()) {
+            CheckBox checkBox = new CheckBox(day.name());
+            checkBox.setUserData(day);
+            dayOptions.getChildren().add(checkBox);
+        }
+
+        daysDialog.getDialogPane().setContent(dayOptions);
+        daysDialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        daysDialog.setResultConverter(button -> {
+            if (button == ButtonType.OK) {
+                Set<Days> selectedDays = new HashSet<>();
+
+                for (Node node : dayOptions.getChildren()) {
+                    CheckBox checkBox = (CheckBox) node;
+
+                    if (checkBox.isSelected()) {
+                        selectedDays.add((Days) checkBox.getUserData());
+                    }
+                }
+
+                return selectedDays;
+            }
+
+            return null;
+        });
+
+        daysDialog.showAndWait().ifPresent(days -> {
+            if (days.isEmpty()) {
+                showMessage("Please select at least one day.");
+                return;
+            }
+
             TextInputDialog startDialog = new TextInputDialog();
             startDialog.setTitle("Start Time");
             startDialog.setHeaderText("Enter start time:");
@@ -231,7 +268,6 @@ public class AdminController {
 
                 endDialog.showAndWait().ifPresent(endText -> {
                     try {
-                        Set<Days> days = parseDays(daysText);
                         LocalTime startTime = LocalTime.parse(startText.trim());
                         LocalTime endTime = LocalTime.parse(endText.trim());
 
@@ -242,23 +278,11 @@ public class AdminController {
                         showMessage("Class time updated.");
 
                     } catch (Exception e) {
-                        showMessage("Invalid time format or day name.");
+                        showMessage("Invalid time format. Use HH:MM, like 09:00.");
                     }
                 });
             });
         });
-    }
-
-    private Set<Days> parseDays(String daysText) {
-        Set<Days> days = new HashSet<>();
-
-        String[] parts = daysText.split(",");
-
-        for (String part : parts) {
-            days.add(Days.valueOf(part.trim().toUpperCase()));
-        }
-
-        return days;
     }
 
     private void enrollWaitlistedStudent(Enrollment enrollment) {
