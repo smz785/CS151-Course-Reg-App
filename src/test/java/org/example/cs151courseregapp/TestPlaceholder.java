@@ -1,5 +1,4 @@
 package org.example.cs151courseregapp;
 
-public class MainApp {
-    
+public class TestPlaceholder {
 }

@@ -25,15 +25,6 @@ public abstract class Section {
         return getEnrollmentCount() < seatCapacity;
     }
 
-    public boolean addEnrollment(Enrollment enrollment) {
-        if (enrollment == null || isFull() || enrollments.contains(enrollment)) {
-            return false;
-        }
-
-        enrollments.add(enrollment);
-        return true;
-    }
-
     public boolean removeEnrollment(Enrollment enrollment) {
         return enrollments.remove(enrollment);
     }
@@ -48,6 +39,23 @@ public abstract class Section {
         }
 
         return count;
+    }
+
+    public boolean addEnrollment(Enrollment enrollment) {
+        if (enrollment == null || enrollments.contains(enrollment)) {
+            return false;
+        }
+
+        if(enrollment.getSection() != this){
+            return false;
+        }
+
+        if (enrollment.countInCapacity() && isFull()) {
+            return false;
+        }
+
+        enrollments.add(enrollment);
+        return true;
     }
 
     public boolean isFull() {
