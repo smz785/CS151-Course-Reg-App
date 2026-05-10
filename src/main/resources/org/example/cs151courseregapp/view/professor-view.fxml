@@ -4,12 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -31,10 +35,9 @@
          <center>
             <VBox prefHeight="600.0" prefWidth="750.0" spacing="15.0" BorderPane.alignment="CENTER">
                <children>
-                  <!-- Class Information Section -->
-                  <VBox prefHeight="115.0" prefWidth="735.0" style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 10;">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="750.0" text="Class Information">
+                        <Label contentDisplay="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="750.0" text="Class Information" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -42,18 +45,41 @@
                               <Insets />
                            </opaqueInsets>
                            <padding>
-                              <Insets bottom="10.0" />
+                              <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <VBox prefHeight="120.0" prefWidth="750.0" spacing="8.0">
+                        <Separator prefWidth="200.0" />
+                        <GridPane hgap="10.0" vgap="8.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="NEVER" maxWidth="487.0" minWidth="0.0" prefWidth="125.0" />
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="550.0" minWidth="0.0" prefWidth="300.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+                          </rowConstraints>
                            <children>
-                              <Label fx:id="classTypeLabel" prefHeight="20.0" prefWidth="750.0" text="Type: In-Person / Online" />
-                              <Label fx:id="buildingPlatformLabel" prefHeight="20.0" prefWidth="750.0" text="Building / Platform: [Value]" />
-                              <Label fx:id="roomMeetingLinkLabel" prefHeight="20.0" prefWidth="750.0" text="Room / Meeting Link: [Value]" />
-                              <Label fx:id="timeslotLabel" prefHeight="20.0" prefWidth="750.0" text="Timeslot: [Value]" />
-                              <Label fx:id="capacityLabel" prefHeight="63.0" prefWidth="713.0" text="Capacity: [Value]" />
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Type: " />
+                              <Label fx:id="classTypeLabel" text="[Value]" GridPane.columnIndex="1" />
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Building / Platform:" GridPane.rowIndex="1" />
+                              <Label fx:id="buildingPlatformLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Room / Meeting Link:" GridPane.rowIndex="2" />
+                              <Label fx:id="roomMeetingLinkLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label prefHeight="20.0" prefWidth="750.0" text="Timeslot: " GridPane.rowIndex="3" />
+                              <Label fx:id="timeslotLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label prefHeight="63.0" prefWidth="713.0" text="Capacity: " GridPane.rowIndex="4" />
+                              <Label fx:id="capacityLabel" text="[Value]" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                            </children>
-                        </VBox>
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
                      </children>
                   </VBox>
                   <ScrollPane fitToWidth="true">
