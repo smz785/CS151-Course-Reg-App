@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SectionTest {
 
     @Test
-    void testSectionCreation() {
+    void testInPersonSectionCreation() {
         Course course = new Course("C1", "Course", 3, "Test Description");
 
-        Section section = new InPersonSection(
+        InPersonSection section = new InPersonSection(
                 null,
                 "Room 101",
                 "SEC1",
@@ -25,6 +25,30 @@ public class SectionTest {
         assertEquals(2, section.getSeatCapacity());
         assertTrue(section.getEnrollments().isEmpty());
         assertEquals("InPerson", section.getSectionType());
+        assertEquals("Room 101", section.getRoomNumber());
+    }
+
+    @Test
+    void testOnlineSectionCreation() {
+        Course course = new Course("C1", "Course", 3, "Test Description");
+
+        OnlineSection section = new OnlineSection(
+                "Zoom",
+                "https://zoom.test/class",
+                "SEC2",
+                course,
+                null,
+                null,
+                30
+        );
+
+        assertEquals("SEC2", section.getSectionId());
+        assertEquals(course, section.getCourse());
+        assertEquals(30, section.getSeatCapacity());
+        assertEquals("Online", section.getSectionType());
+        assertEquals("Zoom", section.getPlatform());
+        assertEquals("https://zoom.test/class", section.getMeetingLink());
+        assertEquals("Zoom - https://zoom.test/class", section.getLocation());
     }
 
     @Test
@@ -67,6 +91,6 @@ public class SectionTest {
         Enrollment enrollment = new Enrollment("E1", student, section);
 
         assertTrue(section.addEnrollment(enrollment));
-        assertFalse(section.addEnrollment(enrollment)); // duplicate should fail 
+        assertFalse(section.addEnrollment(enrollment));
     }
 }
