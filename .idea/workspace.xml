@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="updated codebase and added waitlisted logic">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Year.java" afterDir="false" />
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Added enum class Year for Student.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/StudentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/StudentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cs151courseregapp/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cs151courseregapp/view/student-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cs151courseregapp/view/student-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/TestPlaceholder.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,19 +71,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.StudentTest.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "#7 on main",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.EnrollmentTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RegistrationServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScheduleConflictCheckerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SectionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StudentTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="" />
@@ -213,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778129011054</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added enum class Year for Student.java">
+      <option name="closed" value="true" />
+      <created>1778262054236</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1778262054238</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +246,7 @@
     <MESSAGE value="Updated classes to return a clone and not mutable list objects.&#10;Fixed logic issues in ActiveEnrollmentState.java and DroppedEnrollmentState.java" />
     <MESSAGE value="updated codebase" />
     <MESSAGE value="updated codebase and added waitlisted logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated codebase and added waitlisted logic" />
+    <MESSAGE value="Added enum class Year for Student.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added enum class Year for Student.java" />
   </component>
 </project>
