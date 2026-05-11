@@ -120,7 +120,7 @@ public class SeedData {
                 c1,
                 p1,
                 t2,
-                40
+                2
         );
 
         Section s3 = new InPersonSection(

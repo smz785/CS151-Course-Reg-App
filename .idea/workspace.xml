@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Added Department.java enum class and UML1.png&#10;Updated UML.violet">
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Updated files to use Department.java enum.&#10;Added more data in SeedData.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/SeedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/SeedData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionFactoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,27 +67,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainApp.executor": "Run",
-    "JUnit.EnrollmentTest.executor": "Run",
-    "JUnit.RegistrationServiceTest.executor": "Run",
-    "JUnit.ScheduleConflictCheckerTest.executor": "Run",
-    "JUnit.SectionFactoryTest.executor": "Run",
-    "JUnit.SectionTest.executor": "Run",
-    "JUnit.StudentTest.executor": "Run",
-    "JUnit.UniversityDataTest.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "#35 on main",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainApp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EnrollmentTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RegistrationServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScheduleConflictCheckerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SectionFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SectionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StudentTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UniversityDataTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#36 on main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="" />
@@ -282,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778532677175</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Updated files to use Department.java enum.&#10;Added more data in SeedData.java">
+      <option name="closed" value="true" />
+      <created>1778538746515</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1778538746515</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +318,8 @@
     <MESSAGE value="Updated StudentController.java and student-view.fxml to enter a student id" />
     <MESSAGE value="Added SectionFactoryTest.java, updated RegistrationServiceTest.java, student-view.fxml and StudentController.java" />
     <MESSAGE value="Added Department.java enum class and UML1.png&#10;Updated UML.violet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Department.java enum class and UML1.png&#10;Updated UML.violet" />
+    <MESSAGE value="Updated files to use Department.java enum.&#10;Added more data in SeedData.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated files to use Department.java enum.&#10;Added more data in SeedData.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
