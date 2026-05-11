@@ -15,7 +15,7 @@ public class MainApp extends Application {
 
 
     private static final int WIDTH = 600;
-    private static final int HEIGHT = 440;
+    private static final int HEIGHT = 400;
     private static final String VIEW_PATH = "view/";
 
     @Override
@@ -33,6 +33,8 @@ public class MainApp extends Application {
 
     public static void switchScene(String fxmlFile) throws IOException {
         primaryStage.setScene(loadScene(fxmlFile));
+        primaryStage.setWidth(1000);
+        primaryStage.setHeight(600);
     }
 
     private static Scene loadScene(String fxmlFile) throws IOException {
