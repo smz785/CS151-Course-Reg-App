@@ -89,46 +89,80 @@ public class AdminController {
         }
     }
 
-    private void setupEnrolledTable() {
-        enrolledNameColumn.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getStudent().getName())
-        );
+private void setupEnrolledTable() {
+    enrolledNameColumn.setCellValueFactory(data ->
+            new SimpleStringProperty(data.getValue().getStudent().getName())
+    );
 
-        enrolledIdColumn.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getStudent().getStudentId())
-        );
+    enrolledIdColumn.setCellValueFactory(data ->
+            new SimpleStringProperty(data.getValue().getStudent().getStudentId())
+    );
 
-        enrolledActionColumn.setCellValueFactory(data ->
-                new SimpleStringProperty("Active")
-        );
-    }
+    enrolledActionColumn.setCellFactory(column -> new TableCell<>() {
+        private final Button dropButton = new Button("Drop");
+        {
+            dropButton.setOnAction(event -> {
+                Enrollment enrollment = getTableView()
+                        .getItems()
+                        .get(getIndex());
 
-    private void setupWaitlistedTable() {
-        waitlistedNameColumn.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getStudent().getName())
-        );
+                enrollment.drop();
 
-        waitlistedIdColumn.setCellValueFactory(data ->
-                new SimpleStringProperty(data.getValue().getStudent().getStudentId())
-        );
+                Section section = enrollment.getSection();
 
+                refreshEnrollmentTables(section);
+                showSectionInfo(section);
 
-        waitlistedActionColumn.setCellValueFactory(data ->
-                new SimpleStringProperty("Double-click to enroll")
-        );
-
-        waitlistedStudentsTable.setRowFactory(table -> {
-            TableRow<Enrollment> row = new TableRow<>();
-
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && !row.isEmpty()) {
-                    enrollWaitlistedStudent(row.getItem());
-                }
+                showMessage(
+                        enrollment.getStudent().getName()
+                                + " dropped from section."
+                );
             });
+        }
 
-            return row;
-        });
-    }
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                setGraphic(dropButton);
+            }
+        }
+    });
+}
+
+private void setupWaitlistedTable() {
+    waitlistedNameColumn.setCellValueFactory(data ->
+            new SimpleStringProperty(data.getValue().getStudent().getName())
+    );
+
+    waitlistedIdColumn.setCellValueFactory(data ->
+            new SimpleStringProperty(data.getValue().getStudent().getStudentId())
+    );
+
+    waitlistedActionColumn.setCellFactory(column -> new TableCell<>() {
+        private final Button enrollButton = new Button("Enroll");
+        {
+            enrollButton.setOnAction(event -> {
+                Enrollment enrollment = getTableView()
+                        .getItems()
+                        .get(getIndex());
+                enrollWaitlistedStudent(enrollment);
+            });
+        }
+
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                setGraphic(enrollButton);
+            }
+        }
+    });
+}
 
     private void showSectionInfo(Section section) {
         if (section == null) {
