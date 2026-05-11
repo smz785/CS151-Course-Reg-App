@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="updated Main, Professor and Admin Controller">
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Updated SeedData.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/SeedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/SeedData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cs151courseregapp/view/student-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cs151courseregapp/view/student-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +83,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "#30 on main",
+    "git-widget-placeholder": "#32 on main",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -246,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778457831327</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Updated SeedData.java">
+      <option name="closed" value="true" />
+      <created>1778458852812</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1778458852812</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +281,8 @@
     <MESSAGE value="Completed MainApp.java. Updated pom.xml" />
     <MESSAGE value="Added SeedData.java. Updated MainApp.java to initialize SeedData.java" />
     <MESSAGE value="updated Main, Professor and Admin Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated Main, Professor and Admin Controller" />
+    <MESSAGE value="Updated SeedData.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated SeedData.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
