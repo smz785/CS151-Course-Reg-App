@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.cs151courseregapp.MainApp;
 import org.example.cs151courseregapp.model.*;
+import org.example.cs151courseregapp.service.RegistrationResult;
+import org.example.cs151courseregapp.service.RegistrationService;
+import org.example.cs151courseregapp.service.ScheduleConflictChecker;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +16,11 @@ import java.util.List;
 public class StudentController {
 
     private final UniversityData universityData = UniversityData.getInstance();
+
+    private final RegistrationService registrationService = new RegistrationService(
+            universityData,
+            new ScheduleConflictChecker()
+    );
 
     private Student currentStudent;
 
@@ -51,6 +59,9 @@ public class StudentController {
 
     @FXML
     private TextField studentIdField;
+
+    @FXML
+    private Button dropSelectedButton;
 
     @FXML
     public void initialize() {
@@ -92,15 +103,21 @@ public class StudentController {
 
                 if (empty || section == null) {
                     setText(null);
-                } else {
-                    setText(
-                            section.getCourse().getCourseCode()
-                                    + " - "
-                                    + section.getSectionId()
-                                    + " | "
-                                    + section.getTimeSlot().getDisplayText()
-                    );
+                    return;
                 }
+
+                Enrollment enrollment = findCurrentEnrollmentForSection(section);
+                String status = enrollment == null ? "Unknown" : enrollment.getStatusName().name();
+
+                setText(
+                        section.getCourse().getCourseCode()
+                                + " - "
+                                + section.getSectionId()
+                                + " | "
+                                + status
+                                + " | "
+                                + section.getTimeSlot().getDisplayText()
+                );
             }
         });
     }
@@ -116,12 +133,7 @@ public class StudentController {
 
         instructorColumn.setCellValueFactory(data -> {
             Professor professor = data.getValue().getProfessor();
-
-            if (professor == null) {
-                return new SimpleStringProperty("Unassigned");
-            }
-
-            return new SimpleStringProperty(professor.getName());
+            return new SimpleStringProperty(professor == null ? "Unassigned" : professor.getName());
         });
 
         typeColumn.setCellValueFactory(data ->
@@ -148,23 +160,124 @@ public class StudentController {
                 )
         );
 
-        actionColumn.setCellValueFactory(data -> {
-            Section section = data.getValue();
+        setupActionColumn();
+    }
 
-            if (currentStudent == null) {
-                return new SimpleStringProperty("Load Student");
+    private void setupActionColumn() {
+        actionColumn.setCellValueFactory(data -> new SimpleStringProperty(""));
+
+        actionColumn.setCellFactory(column -> new TableCell<>() {
+            private final Button actionButton = new Button();
+
+            {
+                actionButton.setMaxWidth(Double.MAX_VALUE);
+
+                actionButton.setOnAction(event -> {
+                    Section section = getTableView().getItems().get(getIndex());
+                    registerOrWaitlist(section);
+                });
             }
 
-            if (currentStudent.hasCurrentEnrollmentIn(section)) {
-                return new SimpleStringProperty("Already Added");
-            }
+            @Override
+            protected void updateItem(String ignored, boolean empty) {
+                super.updateItem(ignored, empty);
 
-            if (section.hasAvailableSeat()) {
-                return new SimpleStringProperty("Register");
-            }
+                if (empty || getIndex() < 0 || getIndex() >= getTableView().getItems().size()) {
+                    setGraphic(null);
+                    return;
+                }
 
-            return new SimpleStringProperty("Waitlist");
+                Section section = getTableView().getItems().get(getIndex());
+
+                if (currentStudent == null) {
+                    actionButton.setText("Load Student");
+                    actionButton.setDisable(true);
+                } else if (currentStudent.hasCurrentEnrollmentIn(section)) {
+                    actionButton.setText("Added");
+                    actionButton.setDisable(true);
+                } else if (section.hasAvailableSeat()) {
+                    actionButton.setText("Register");
+                    actionButton.setDisable(false);
+                } else {
+                    actionButton.setText("Waitlist");
+                    actionButton.setDisable(false);
+                }
+
+                setGraphic(actionButton);
+            }
         });
+    }
+
+    private void registerOrWaitlist(Section section) {
+        if (currentStudent == null) {
+            showMessage("Load a student before registering.");
+            return;
+        }
+
+        RegistrationResult result = registrationService.regStudent(currentStudent, section);
+
+        switch (result) {
+            case REGISTERED -> showMessage(
+                    "Registered for "
+                            + section.getCourse().getCourseCode()
+                            + " section "
+                            + section.getSectionId()
+                            + "."
+            );
+
+            case WAITLISTED -> showMessage(
+                    "Section is full. Added to waitlist for "
+                            + section.getCourse().getCourseCode()
+                            + " section "
+                            + section.getSectionId()
+                            + "."
+            );
+
+            case DUPLICATE_ENROLLMENT -> showMessage(
+                    "You are already registered or waitlisted for this section."
+            );
+
+            case SCHEDULE_CONFLICT -> showMessage(
+                    "Cannot register: this section conflicts with your current schedule."
+            );
+
+            case INVALID_INPUT -> showMessage(
+                    "Cannot register: invalid student or section."
+            );
+        }
+
+        refreshStudentPage();
+    }
+
+    @FXML
+    private void dropSelectedClass() {
+        if (currentStudent == null) {
+            showMessage("Load a student before dropping a class.");
+            return;
+        }
+
+        Section selectedSection = classesListView.getSelectionModel().getSelectedItem();
+
+        if (selectedSection == null) {
+            showMessage("Select a class from My Classes first.");
+            return;
+        }
+
+        boolean dropped = registrationService.dropStudent(currentStudent, selectedSection);
+
+        if (dropped) {
+            showMessage(
+                    "Dropped "
+                            + selectedSection.getCourse().getCourseCode()
+                            + " section "
+                            + selectedSection.getSectionId()
+                            + "."
+            );
+        } else {
+            showMessage("Could not drop the selected class.");
+        }
+
+        refreshStudentPage();
     }
 
     private void refreshStudentPage() {
@@ -174,9 +287,21 @@ public class StudentController {
             return;
         }
 
-        classesListView.getItems().setAll(currentStudent.getEnrolledSections());
+        classesListView.getItems().setAll(getCurrentStudentActiveOrWaitlistedSections());
         coursesTable.getItems().setAll(getAvailableSectionsForCurrentStudent());
         coursesTable.refresh();
+    }
+
+    private List<Section> getCurrentStudentActiveOrWaitlistedSections() {
+        List<Section> sections = new ArrayList<>();
+
+        for (Enrollment enrollment : currentStudent.getEnrollments()) {
+            if (enrollment.isActive() || enrollment.isWaitlisted()) {
+                sections.add(enrollment.getSection());
+            }
+        }
+
+        return sections;
     }
 
     private List<Section> getAvailableSectionsForCurrentStudent() {
@@ -189,6 +314,21 @@ public class StudentController {
         }
 
         return availableSections;
+    }
+
+    private Enrollment findCurrentEnrollmentForSection(Section section) {
+        if (currentStudent == null || section == null) {
+            return null;
+        }
+
+        for (Enrollment enrollment : currentStudent.getEnrollments()) {
+            if ((enrollment.isActive() || enrollment.isWaitlisted())
+                    && enrollment.getSection().equals(section)) {
+                return enrollment;
+            }
+        }
+
+        return null;
     }
 
     private void showMessage(String message) {
