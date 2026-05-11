@@ -34,7 +34,7 @@ public class SectionFactoryTest {
         return new Professor(
                 "P001",
                 "Dr. Smith",
-                "Computer Science"
+                Department.COMPUTER_SCIENCE
         );
     }
 

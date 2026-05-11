@@ -26,7 +26,7 @@ public class RegistrationServiceTest {
     }
 
     private Professor professor(String id) {
-        return new Professor(id, "Professor " + id, "Computer Science");
+        return new Professor(id, "Professor " + id, Department.COMPUTER_SCIENCE);
     }
 
     private Section inPersonSection(String sectionId, TimeSlot timeSlot, int capacity) {
