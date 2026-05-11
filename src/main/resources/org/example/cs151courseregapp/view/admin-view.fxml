@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -24,11 +25,17 @@
          <left>
             <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="250.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="250.0" text="Classes" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <Button mnemonicParsing="false" onAction="#goBackToMain" prefWidth="60.0" text="← Back" />
+                     <Label text="Classes" textAlignment="CENTER">
+                        <font>
+                           <Font name="System Bold" size="14.0" />
+                        </font>
+                     </Label>
+                  </HBox>
                   <ListView fx:id="classesListView" prefHeight="570.0" prefWidth="250.0" />
                </children>
             </VBox>
