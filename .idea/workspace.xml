@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="updated Main, Professor and Admin Controller">
+    <list default="true" id="7d6c92ea-5748-44bc-ab44-72335871e030" name="Changes" comment="Added Department.java enum class and UML1.png&#10;Updated UML.violet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/SeedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cs151courseregapp/model/SeedData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/RegistrationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/cs151courseregapp/SectionFactoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +20,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -73,16 +75,18 @@
     "JUnit.EnrollmentTest.executor": "Run",
     "JUnit.RegistrationServiceTest.executor": "Run",
     "JUnit.ScheduleConflictCheckerTest.executor": "Run",
+    "JUnit.SectionFactoryTest.executor": "Run",
     "JUnit.SectionTest.executor": "Run",
     "JUnit.StudentTest.executor": "Run",
     "JUnit.UniversityDataTest.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "#30 on main",
+    "git-widget-placeholder": "#35 on main",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -246,7 +250,39 @@
       <option name="project" value="LOCAL" />
       <updated>1778457831327</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Updated SeedData.java">
+      <option name="closed" value="true" />
+      <created>1778458852812</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1778458852812</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Updated StudentController.java and student-view.fxml to enter a student id">
+      <option name="closed" value="true" />
+      <created>1778463602635</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1778463602635</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added SectionFactoryTest.java, updated RegistrationServiceTest.java, student-view.fxml and StudentController.java">
+      <option name="closed" value="true" />
+      <created>1778468330772</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1778468330772</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added Department.java enum class and UML1.png&#10;Updated UML.violet">
+      <option name="closed" value="true" />
+      <created>1778532677173</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1778532677175</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +308,11 @@
     <MESSAGE value="Completed MainApp.java. Updated pom.xml" />
     <MESSAGE value="Added SeedData.java. Updated MainApp.java to initialize SeedData.java" />
     <MESSAGE value="updated Main, Professor and Admin Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated Main, Professor and Admin Controller" />
+    <MESSAGE value="Updated SeedData.java" />
+    <MESSAGE value="Updated StudentController.java and student-view.fxml to enter a student id" />
+    <MESSAGE value="Added SectionFactoryTest.java, updated RegistrationServiceTest.java, student-view.fxml and StudentController.java" />
+    <MESSAGE value="Added Department.java enum class and UML1.png&#10;Updated UML.violet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Department.java enum class and UML1.png&#10;Updated UML.violet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
