@@ -58,9 +58,6 @@ public class AdminController {
     private TableColumn<Enrollment, String> waitlistedIdColumn;
 
     @FXML
-    private TableColumn<Enrollment, String> waitlistPositionColumn;
-
-    @FXML
     private TableColumn<Enrollment, String> waitlistedActionColumn;
 
     @FXML
@@ -115,10 +112,6 @@ public class AdminController {
                 new SimpleStringProperty(data.getValue().getStudent().getStudentId())
         );
 
-        waitlistPositionColumn.setCellValueFactory(data -> {
-            int position = waitlistedStudentsTable.getItems().indexOf(data.getValue()) + 1;
-            return new SimpleStringProperty(String.valueOf(position));
-        });
 
         waitlistedActionColumn.setCellValueFactory(data ->
                 new SimpleStringProperty("Double-click to enroll")

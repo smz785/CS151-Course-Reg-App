@@ -45,8 +45,7 @@ public class ProfessorController {
     @FXML
     private TableColumn<Enrollment, String> waitlistedIdColumn;
 
-    @FXML
-    private TableColumn<Enrollment, String> waitlistPositionColumn;
+
 
     @FXML
     public void initialize() {
@@ -96,10 +95,6 @@ public class ProfessorController {
                 new SimpleStringProperty(data.getValue().getStudent().getStudentId())
         );
 
-        waitlistPositionColumn.setCellValueFactory(data -> {
-            int position = waitlistedStudentsTable.getItems().indexOf(data.getValue()) + 1;
-            return new SimpleStringProperty(String.valueOf(position));
-        });
     }
 
     private void showSectionInfo(Section section) {
