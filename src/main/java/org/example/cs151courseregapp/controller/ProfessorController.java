@@ -128,4 +128,12 @@ public class ProfessorController {
             }
         }
     }
+
+    @FXML
+    private void goBackToMain() throws java.io.IOException {
+        javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(getClass().getResource("/org/example/cs151courseregapp/view/main-view.fxml"));
+        javafx.scene.Scene scene = new javafx.scene.Scene(fxmlLoader.load(), 600, 400);
+        javafx.stage.Stage stage = (javafx.stage.Stage) classesListView.getScene().getWindow();
+        stage.setScene(scene);
+    }
 }
