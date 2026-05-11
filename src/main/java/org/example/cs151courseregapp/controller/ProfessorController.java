@@ -45,8 +45,7 @@ public class ProfessorController {
     @FXML
     private TableColumn<Enrollment, String> waitlistedIdColumn;
 
-    @FXML
-    private TableColumn<Enrollment, String> waitlistPositionColumn;
+
 
     @FXML
     public void initialize() {
@@ -96,10 +95,6 @@ public class ProfessorController {
                 new SimpleStringProperty(data.getValue().getStudent().getStudentId())
         );
 
-        waitlistPositionColumn.setCellValueFactory(data -> {
-            int position = waitlistedStudentsTable.getItems().indexOf(data.getValue()) + 1;
-            return new SimpleStringProperty(String.valueOf(position));
-        });
     }
 
     private void showSectionInfo(Section section) {
@@ -127,5 +122,14 @@ public class ProfessorController {
                 enrolledStudentsTable.getItems().add(enrollment);
             }
         }
+    }
+
+    @FXML
+    private void goBackToMain() throws java.io.IOException {
+        javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(getClass().getResource("/org/example/cs151courseregapp/view/main-view.fxml"));
+        javafx.scene.Scene scene = new javafx.scene.Scene(fxmlLoader.load());
+        javafx.stage.Stage stage = (javafx.stage.Stage) classesListView.getScene().getWindow();
+        stage.setScene(scene);
+        stage.sizeToScene();
     }
 }

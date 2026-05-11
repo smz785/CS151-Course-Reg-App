@@ -58,9 +58,6 @@ public class AdminController {
     private TableColumn<Enrollment, String> waitlistedIdColumn;
 
     @FXML
-    private TableColumn<Enrollment, String> waitlistPositionColumn;
-
-    @FXML
     private TableColumn<Enrollment, String> waitlistedActionColumn;
 
     @FXML
@@ -115,10 +112,6 @@ public class AdminController {
                 new SimpleStringProperty(data.getValue().getStudent().getStudentId())
         );
 
-        waitlistPositionColumn.setCellValueFactory(data -> {
-            int position = waitlistedStudentsTable.getItems().indexOf(data.getValue()) + 1;
-            return new SimpleStringProperty(String.valueOf(position));
-        });
 
         waitlistedActionColumn.setCellValueFactory(data ->
                 new SimpleStringProperty("Double-click to enroll")
@@ -306,5 +299,14 @@ public class AdminController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void goBackToMain() throws java.io.IOException {
+        javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(getClass().getResource("/org/example/cs151courseregapp/view/main-view.fxml"));
+        javafx.scene.Scene scene = new javafx.scene.Scene(fxmlLoader.load());
+        javafx.stage.Stage stage = (javafx.stage.Stage) classesListView.getScene().getWindow();
+        stage.setScene(scene);
+        stage.sizeToScene();
     }
 }
