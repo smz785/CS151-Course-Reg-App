@@ -62,6 +62,53 @@ public class SeedData {
                 t2,
                 40
         );
+        Student std1 = new Student(
+                "STD001",
+                "std1",
+                "CS",
+                Year.FRESHMAN
+
+        );
+        Student std2 = new Student(
+                "STD002",
+                "std2",
+                "CS",
+                Year.JUNIOR
+
+        );
+        Student std3 = new Student(
+                "STD003",
+                "std3",
+                "CS",
+                Year.SOPHOMORE
+
+        );
+
+        data.addStudent(std1);
+        data.addStudent(std2);
+        data.addStudent(std3);
+
+        Enrollment e1 = new Enrollment("E001", std1, s1); // active by default
+        Enrollment e2 = new Enrollment("E002", std2, s1); // active by default
+
+        Enrollment e3 = new Enrollment(
+                "E003",
+                std3,
+                s1,
+                new WaitlistedEnrollmentState()
+        );
+
+        s1.addEnrollment(e1);
+        s1.addEnrollment(e2);
+        s1.addEnrollment(e3);
+
+        std1.addEnrollment(e1);
+        std2.addEnrollment(e2);
+        std3.addEnrollment(e3);
+
+        data.addEnrollment(e1);
+        data.addEnrollment(e2);
+        data.addEnrollment(e3);
 
         p1.assignSection(s1);
         p2.assignSection(s2);
