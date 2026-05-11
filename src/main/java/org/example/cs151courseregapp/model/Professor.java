@@ -6,10 +6,10 @@ import java.util.List;
 public class Professor {
     private String professorId;
     private String name;
-    private String department;
+    private Department department;
     private List<Section> assignedSections;
 
-    public Professor(String professorId, String name, String department) {
+    public Professor(String professorId, String name, Department department) {
         this.professorId = professorId;
         this.name = name;
         this.department = department;
@@ -38,7 +38,11 @@ public class Professor {
         return name;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
+    }
+
+    public String getDepartmentDisplayName() {
+        return department.getDisplayName();
     }
 }
